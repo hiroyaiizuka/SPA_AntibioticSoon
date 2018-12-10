@@ -1,0 +1,34 @@
+body {
+    background: #f5deb3;
+  }
+
+  .container {
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .weight {
+    width: 120px;
+  }
+  
+  .age {
+    width: 120px;
+  }
+  
+  .cr {
+    width: 120px;
+  }
+  
+  .ccr {
+    width: 30px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .card{
+  width: 100 px;
+  }
+
+
+
+
