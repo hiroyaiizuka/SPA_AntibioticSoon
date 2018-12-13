@@ -7,10 +7,12 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import Ionicon from 'react-ionicons'
 import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+
 
 class SearchAppBar extends React.Component {
 
@@ -24,27 +26,21 @@ class SearchAppBar extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+            <Typography className={classes.title} component={Link} to="/" variant="button" color="inherit" style = {{textDecoration: "none"}} >
                 AntibioticSoon
             </Typography>
-            <div className={classes.search}>
-            
-            <div className={classes.searchIcon}>
-              <SearchIcon /> 
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-            <div className={classes.grow} />
-            <Link to = "/"><Ionicon icon="ios-home" style = {{marginRight:50}}  fontSize="35px" color="rgb(220,220,220)" /></Link>
-            <Link to = "/cr"><Ionicon icon="md-calculator" style = {{marginRight:50}}  fontSize="35px" color="rgb(220,220,220)" /></Link>
-            <Link to = "/dose"><Ionicon icon="ios-beaker"  style = {{marginRight:20}} fontSize="35px" color="rgb(220,220,220)"/></Link>
-          
+
+         
+      <div className={classes.grow} />
+            <Tooltip title="ホーム"  placement="bottom-start">
+               <Link to = "/"><Ionicon icon="ios-home" style = {{marginRight:30}}  fontSize="35px" color="rgb(220,220,220)" /></Link>
+            </Tooltip>
+            <Tooltip title="Ccr計算"  placement="bottom-start">
+               <Link to = "/cr"><Ionicon icon="md-calculator" style = {{marginRight:30}}  fontSize="35px" color="rgb(220,220,220)" /></Link>
+            </Tooltip>
+            <Tooltip title="抗菌薬投与量"  placement="bottom-start">
+               <Link to = "/dose"><Ionicon icon="ios-beaker"  style = {{marginRight:0}} fontSize="35px" color="rgb(220,220,220)"/></Link>
+            </Tooltip>
           </Toolbar>
         </AppBar>
       </div>
@@ -66,50 +62,9 @@ const styles = theme => ({
   },
   title: {
     display: 'none',
-    marginRight: 30,
+    marginLeft: 10,
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 40,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit,
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-    width: '100%',
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200,
-      },
     },
   },
 });

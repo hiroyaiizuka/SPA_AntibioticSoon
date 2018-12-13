@@ -8,13 +8,14 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Adrop from './Adrop';
-import Qsofa from './Qsofa';
-import Atypical from './Atypical';
+import Adrop from '../cap/Adrop';
+import Qsofa from '../cap/Qsofa';
+import Taisei from './Taisei';
+
 
 
 function getSteps() {
-  return ['A-DROP', 'q-SOFA', '非定形肺炎との鑑別'];
+  return ['A-DROP', 'q-SOFA', '耐性菌リスク'];
 }
 
 function getStepContent(step) {
@@ -66,15 +67,14 @@ function getStepContent(step) {
     case 2:
       return (
         <div>
-          <Atypical/>
+            <Taisei/>
           <div style = {{ backgroundColor: 'rgb(130,200,143)',
-            marginTop: 20,
-            height: 180,
+            marginTop: 40,
+            height: 80,
             width: 480,
             padding: 15,
             }}>
-          <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> ☆  1 〜 6 のうち {"\n"} 4項目以上で、非定型肺炎疑い (感度78%, 特異度93%) </Typography>
-            <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}>☆   1 〜 5 のうち {"\n"} 3項目以上で、非定型肺炎疑い (感度84%, 特異度87%) </Typography>
+          <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> 2項目以上で耐性菌リスク(+)</Typography>
           </div>
         </div>
       );
@@ -83,7 +83,7 @@ function getStepContent(step) {
   }
 }
 
-class CapSevererity extends React.Component {
+class NhcapSevererity extends React.Component {
   state = {
     activeStep: 0,
   };
@@ -117,7 +117,7 @@ class CapSevererity extends React.Component {
     return (
       <div className={classes.root}>
         <h3 >重症度評価</h3>
-        <Button href="/captreat" style = {{position: "relative", top: -50, left: 350 }}>
+        <Button href="/nhcaptreat" style = {{position: "relative", top: -50, left: 350 }}>
             治療
          </Button>
         <Stepper activeStep={activeStep} nonLinear orientation="vertical">
@@ -176,8 +176,8 @@ const styles = theme => ({
 });
 
 
-CapSevererity.propTypes = {
+NhcapSevererity.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(CapSevererity);
+export default withStyles(styles)(NhcapSevererity);

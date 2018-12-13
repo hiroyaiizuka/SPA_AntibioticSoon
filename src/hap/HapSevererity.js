@@ -8,13 +8,14 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Adrop from './Adrop';
-import Qsofa from './Qsofa';
-import Atypical from './Atypical';
+import Iroad from './Iroad';
+import Qsofa from '../cap/Qsofa';
+import Taisei from '../nhcap/Taisei';
+
 
 
 function getSteps() {
-  return ['A-DROP', 'q-SOFA', '非定形肺炎との鑑別'];
+  return ['I-ROAD', 'q-SOFA', '耐性菌リスク'];
 }
 
 function getStepContent(step) {
@@ -22,7 +23,7 @@ function getStepContent(step) {
     case 0:
   return (
     <div>
-    <Adrop/>
+    <Iroad/>
      <div style = {{ backgroundColor: 'rgb(130,200,143)',
             marginTop: 25,
             marginBottom: 25,
@@ -59,22 +60,20 @@ function getStepContent(step) {
             padding: 17,
             fontSize: 16}}>
             <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> qSOFA ≧２項目     敗血症疑い </Typography>
-            <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> ADROP ≧３項目  qSOFA ≧２項目{"\n"}{"\n"}➡︎  超重症 (ICU 検討) </Typography>
           </div>
         </div>
       );
     case 2:
       return (
         <div>
-          <Atypical/>
+            <Taisei/>
           <div style = {{ backgroundColor: 'rgb(130,200,143)',
-            marginTop: 20,
-            height: 180,
+            marginTop: 40,
+            height: 80,
             width: 480,
             padding: 15,
             }}>
-          <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> ☆  1 〜 6 のうち {"\n"} 4項目以上で、非定型肺炎疑い (感度78%, 特異度93%) </Typography>
-            <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}>☆   1 〜 5 のうち {"\n"} 3項目以上で、非定型肺炎疑い (感度84%, 特異度87%) </Typography>
+          <Typography style={{marginBottom: 8, marginTop:0, fontSize: 15,color: 'rgb(25,255,255)'}}> 2項目以上で耐性菌リスク(+)</Typography>
           </div>
         </div>
       );
@@ -83,7 +82,7 @@ function getStepContent(step) {
   }
 }
 
-class CapSevererity extends React.Component {
+class HapSevererity extends React.Component {
   state = {
     activeStep: 0,
   };
@@ -117,7 +116,7 @@ class CapSevererity extends React.Component {
     return (
       <div className={classes.root}>
         <h3 >重症度評価</h3>
-        <Button href="/captreat" style = {{position: "relative", top: -50, left: 350 }}>
+        <Button href="/haptreat" style = {{position: "relative", top: -50, left: 350 }}>
             治療
          </Button>
         <Stepper activeStep={activeStep} nonLinear orientation="vertical">
@@ -176,8 +175,8 @@ const styles = theme => ({
 });
 
 
-CapSevererity.propTypes = {
+HapSevererity.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(CapSevererity);
+export default withStyles(styles)(HapSevererity);
