@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, } from 'react-router-dom';
 import NativeSelects from './NativeSelects';
 import Home from './Home';
 import Dose from './DoseAntibiotics/Dose';

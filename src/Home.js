@@ -6,6 +6,83 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 
 
+
+function Home(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      {images.map(image => (
+        <ButtonBase
+          focusRipple
+          component = {Link}
+          to = {image.path}
+          key={image.title}
+          className={classes.image}
+          focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: "30%", margin: "auto"
+          }}
+        >
+          <span
+            className={classes.imageSrc}
+            style={{
+              backgroundImage: `url(${image.url})`,
+            }}
+          />
+          <span className={classes.imageBackdrop} />
+          <span className={classes.imageButton}>
+            <Typography
+              component="span"
+              variant="h6"
+              color="inherit"
+              className={classes.imageTitle}
+            > 
+                {image.title}
+              <span className={classes.imageMarked} />
+            </Typography>
+          </span>
+        </ButtonBase>
+      ))}
+
+  {images2.map(image => (
+        <ButtonBase
+          focusRipple
+          component = {Link}
+          to = {image.path}
+          key={image.title}
+          className={classes.image}
+          focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: "40%", margin: "auto", marginTop: 80, marginBottom: 80
+          }}
+        >
+          <span
+            className={classes.imageSrc}
+            style={{
+              backgroundImage: `url(${image.url})`,
+            }}
+          />
+          <span className={classes.imageBackdrop} />
+          <span className={classes.imageButton}>
+            <Typography
+              component="span"
+              variant="h6"
+              color="inherit"
+              className={classes.imageTitle}
+            > 
+                {image.title}
+              <span className={classes.imageMarked} />
+            </Typography>
+          </span>
+        </ButtonBase>
+      ))}
+
+    </div>
+  );
+}
+
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -117,81 +194,6 @@ const images2 = [
   },
 
 ];
-
-function Home(props) {
-  const { classes } = props;
-
-  return (
-    <div className={classes.root}>
-      {images.map(image => (
-        <ButtonBase
-          focusRipple
-          component = {Link}
-          to = {image.path}
-          key={image.title}
-          className={classes.image}
-          focusVisibleClassName={classes.focusVisible}
-          style={{
-            width: "30%", margin: "auto"
-          }}
-        >
-          <span
-            className={classes.imageSrc}
-            style={{
-              backgroundImage: `url(${image.url})`,
-            }}
-          />
-          <span className={classes.imageBackdrop} />
-          <span className={classes.imageButton}>
-            <Typography
-              component="span"
-              variant="h5"
-              color="inherit"
-              className={classes.imageTitle}
-            > 
-                {image.title}
-              <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-        </ButtonBase>
-      ))}
-
-  {images2.map(image => (
-        <ButtonBase
-          focusRipple
-          component = {Link}
-          to = {image.path}
-          key={image.title}
-          className={classes.image}
-          focusVisibleClassName={classes.focusVisible}
-          style={{
-            width: "40%", margin: "auto", marginTop: 80, marginBottom: 80
-          }}
-        >
-          <span
-            className={classes.imageSrc}
-            style={{
-              backgroundImage: `url(${image.url})`,
-            }}
-          />
-          <span className={classes.imageBackdrop} />
-          <span className={classes.imageButton}>
-            <Typography
-              component="span"
-              variant="h5"
-              color="inherit"
-              className={classes.imageTitle}
-            > 
-                {image.title}
-              <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-        </ButtonBase>
-      ))}
-
-    </div>
-  );
-}
 
 Home.propTypes = {
   classes: PropTypes.object.isRequired,
